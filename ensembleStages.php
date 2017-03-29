@@ -1,6 +1,7 @@
   <?php
     session_start();
     include 'view/includes/header.php';
+    include 'view/includes/connexionBD.php';
   ?>
 
 	<h2>Jean-Marc Dupont - BTS1</h2>
@@ -10,7 +11,7 @@
     	     <h3>Historique des stages</h3>
         </div>
         <div class="right1">
-    	     <input type="button" value="Ajouter un stage" onclick="html:location.href='add_stage.php'">
+    	     <input type="button" value="Ajouter un stage" onclick="html:location.href='nouvelleClasse.php'">
     	 </div>
       </div>
       <br> 
@@ -27,18 +28,67 @@
 
    			<tbody> <!-- Corps du tableau -->
    				<tr>
-   					<td>2016/2017</td>
-   					<td>Mentalworks</td>
-   					<td>M.Ammar</td>
-   					<td>M.Salesse</td>
-   					<td><a href="detail_stage.php">Voir détails</td>
+   					<td><?php $query = $bdd->prepare('SELECT Annee FROM annee WHERE Id_date_annee =2');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Annee'];
+                                 } 
+            ?></td>
+   					<td><?php $query = $bdd->prepare('SELECT Nom_entreprise FROM entreprise WHERE Id_entreprise =2');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Nom_entreprise'];
+                                 } 
+            ?></td>
+   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_peda FROM referent_peda WHERE Id_referent_peda =1');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Nom_referent_peda'];
+                                 } 
+            ?></td>
+   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_pro FROM referent_pro WHERE Id_referent_pro =1');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Nom_referent_pro'];
+                                 } 
+            ?></td>
+   					<td>Voir détails</td>
    				</tr>
    				<tr>
-   					<td>2015/2016</td>
-   					<td>Nodevo</td>
-   					<td>M.Ammar</td>
-   					<td>M.Ammar</td>
-   					<td><a href="detail_stage.php">Voir détails</td>
+   					<td><?php $query = $bdd->prepare('SELECT Annee FROM annee WHERE Id_date_annee =1');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Annee'];
+                                 } 
+            ?></td>
+   					<td><?php $query = $bdd->prepare('SELECT Nom_entreprise FROM entreprise WHERE Id_entreprise =1');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Nom_entreprise'];
+                                 } 
+            ?></td>
+   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_peda FROM referent_peda WHERE Id_referent_peda =1');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Nom_referent_peda'];
+                                 } 
+            ?></td>
+   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_pro FROM referent_pro WHERE Id_referent_pro =2');
+                                 $query->execute();
+                                 while ($results = $query->fetch())
+                                 {
+                                 echo $results['Nom_referent_pro'];
+                                 } 
+            ?></td>
+   					<td>Voir détails</td>
    				</tr>
    			</tbody>
+
 		</table>		

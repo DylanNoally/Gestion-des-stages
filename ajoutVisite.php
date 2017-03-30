@@ -10,5 +10,5 @@
 	<br><br>
 	Observations: <br> <textarea name="Observations" rows="4" cols="40">Observations</textarea>
 	<br>
-	<a href="detail_stage.php"><input type="submit" name="Valider"></a>
+	<input type="submit" name="Valider">
 	<input type="reset" name="Annuler">

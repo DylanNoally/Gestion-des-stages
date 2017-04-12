@@ -8,7 +8,7 @@ session_start();
 include 'view/includes/header.php';
 
 // On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-//include 'view/includes/retourEnForce.php';
+include 'view/includes/retourEnForce.php';
 
 //
 require 'view/includes/traitementRechercheEleve.php';

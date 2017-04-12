@@ -1,5 +1,3 @@
-<!-- Inclusion des éléments de la page -->
-
 <?php
 // On démarre la session AVANT d'écrire du code HTML
 session_start();
@@ -17,9 +15,9 @@ include 'view/includes/header.php';
 
 			<!-- Ajout d'un référent -->
 			<div id="ecart1">
-				<form method="get" action="traitement.php">
+				<form method="POST" action="entreprise_ajou_ref_pro.php">
 					<p>
-						<label for="nom">Nom du référent</label> : <input type="text" name="nom" id="nom" placeholder="Ex : Fethi Ammar" />
+						<label for="nom">Nom du référent</label> : <input type="text" name="nom" id="nom" id="prenom" placeholder="Ex : AMMAR FETHI" />
 					</p>
 			</div>
 
@@ -29,14 +27,23 @@ include 'view/includes/header.php';
 					<p>
 						<label for="fonction">Fonction</label> :
 						<select name="fonction" id="fonction">
-							<option value="chef">Chef de projets</option>
+							<option value="Chef de projets">Chef de projets</option>
+							<option value="Développeur web">Développeur web</option>
 						</select>
 					</p>
 				</div>
 
 				<!-- Envoie du formulaire -->
-					<input type="submit" name="Valider" />
+					<input type="submit" name="Valider">
 			</form>
 		</div>
 	</div>
 </div>
+
+<?php
+// On inclue le traitement du formulaire
+include 'view/includes/traitementAjouRefPro.php';
+
+// On inclue le footer à la page
+include 'view/includes/footer.php';
+?>

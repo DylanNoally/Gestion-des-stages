@@ -3,12 +3,6 @@
 	session_start();
 
 	include 'view/includes/header.php';
-	include 'view/includes/connexionBD.php';
-	$query = $bdd->prepare('SELECT * FROM etudiant');
-	$query->execute();
-	$results=$query->fetchAll();
-	var_dump($results);
-
 ?>
 
 <div class="container">
@@ -19,65 +13,43 @@
 				<form action="ensembleStages.php" method="GET" >
 					<label>Classe :</label>
 			        <select name="classe" id="classe">
-			        			<?php   
-			        		$compteur = $bdd->prepare('SELECT COUNT(Id_classe) as compteurClasse FROM classe');
-			        	    $compteur->execute();
-			        			for ($i=1; $i < $compteur ; $i++) 
-			        			{
-			        			?> 
-			        			<option value=<?php "bts".[$i]?>>
-			        			<?php 
-			           				$query = $bdd->prepare('SELECT Nom_classe FROM classe WHERE Id_classe=$i');
-			           				$query->execute();
+		        		<?php 
+		           			$query = $bdd->prepare('SELECT Nom_classe, Id_classe FROM classe');
+		           			$query->execute();
+		           			$results = $query->fetchAll();
 
-			           			while ($results = $query->fetch())
-								{
-									echo $results['Nom_classe'];
-								}
-								?>
-			           	</option>
-			           	<?php
-			        	}
-			        	?>
-			            
-			            <option value="bts2">
-			            	<?php 
-			           			$query = $bdd->prepare('SELECT Nom_classe FROM classe WHERE Id_classe=2');
-			           			$query->execute();
 
-			           			while ($results = $query->fetch())
-								{
-								   echo $results['Nom_classe'];
-								}
-							?>
-						</option>
+		           			foreach ($results as $classe) 
+		           			{
+						?>
+
+        					<option value="<?php echo $classe['Id_classe']; ?>">
+    							<?php echo $classe['Nom_classe']; ?>
+        					</option>
+    					<?php
+							}
+						?>
 			        </select>
 
 			        <br>
 
-					<label>Elève :</label>
-			        <select name="classe" id="classe">
-			            <option value="eleve1"><?php 
-			           							$query = $bdd->prepare('SELECT Nom_etudiant, Prenom_etudiant FROM etudiant WHERE Id_etudiant=1');
-			           							$query->execute();
+					<label>Elève :</label> 
+			        <select name="eleve" id="eleve">
+			            
+			            <?php 
+			           		$query = $bdd->prepare('SELECT Nom_etudiant, Prenom_etudiant, Id_etudiant FROM etudiant');
+			           		$query->execute();
+							$results = $query->fetchAll();
+			           		foreach ($results as $eleve) 
+			           		{
+			           	?>
 
-			           							while ($results = $query->fetch())
-												{
-												    echo $results['Nom_etudiant'].' '.$results['Prenom_etudiant'];
-												}
-												?>
-						</option>
-			           <option value="eleve2"><?php 
-			           							$query = $bdd->prepare('SELECT Nom_etudiant, Prenom_etudiant FROM etudiant WHERE Id_etudiant=2');
-			           							$query->execute();
-
-			           							while ($results = $query->fetch())
-												{
-												    echo $results['Nom_etudiant'].' '.$results['Prenom_etudiant'];
-												}
-												?>
-						</option>
-			        </select>
-
+			           		<option value="<?php echo $eleve['Id_etudiant']; ?>">
+								<?php echo $eleve['Prenom_etudiant']." ".$eleve['Nom_etudiant']; ?>
+							</option>
+						<?php
+							}
+						?>
+					</select>
 				<input type="submit" name="rechercheEleve" value="Rechercher">
 				</form>

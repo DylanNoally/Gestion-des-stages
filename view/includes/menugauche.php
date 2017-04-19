@@ -2,19 +2,20 @@
 	<li>
 		<a href="index.php" class="active">Accueil</a>
 	</li>
+
 	<li>
-		<a href="stage.php">Stages</a>
+		<a href="#">Stages</a>
 	</li>
+
 	<li>
-		<a href="add_stage.php">Entreprises</a>
+		<a href="entreprise_ajou_ref_pro.php">Entreprises</a>
 	</li>
+	
 	<li>
-		<a href="nouvelleAnnee.php">Élèves</a>
+		<a href="classe.php">Classes</a>
 	</li>
+
 	<li>
-		<a href="nouvelleClassePourEleve.php">Classes</a>
-	</li>
-	<li>
-		<a href='suiviScolarite.php'>Suivi scolarité</a>
+		<a href="#">Suivi de scolarité</a>
 	</li>
 </ul>

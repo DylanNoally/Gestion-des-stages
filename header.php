@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="public/css/zz.css">
+	<link rel="stylesheet" href="public/css/os.css">
+	<link rel="stylesheet" href="public/css/stylesheet.css" type="text/css" charset="utf-8" />
 	<title>Acceuil</title>
 </head>
 
@@ -28,3 +29,5 @@
 				?>
 		</div>
 	</div>
+
+

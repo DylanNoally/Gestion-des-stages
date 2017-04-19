@@ -3,10 +3,11 @@
 session_start();
 
 // Traitement du paramettre de la page "classe" passé dans l'URL
-$idEtudiant = $_GET['id_etudiant'];
+$idEtudiant = 0;
+//$_GET['id_etudiant'];
 
 // On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-include 'view/includes/retourEnForce.php';
+//include 'view/includes/retourEnForce.php';
 
 // On inclue le menu et la connexion à la page
 include 'view/includes/header.php';
@@ -15,8 +16,13 @@ include 'view/includes/header.php';
 <!-- Le corps de la page -->
 <div class="container">
 	<div id="content">
-		<!-- Bouton "Nouvelle visite" qui nous redirigera vers la page "Ajout d'une visite"-->
-		<p><a href="#"><img src="public/img/bouton_nv_visite.png" alt="Image bouton nouvelle visite" title="Nouvelle visite"></a></p>
+		<div style="float: left;">
+			<?php include 'view/includes/responsiveMenuGauche.php'; ?>
+		</div>
+		<div id="bouton_nouv_visite">
+			<!-- Bouton "Nouvelle visite" qui nous redirigera vers la page "Ajout d'une visite"-->
+			<p><a href="#"><img src="public/img/bouton_nv_visite.png" alt="Image bouton nouvelle visite" title="Nouvelle visite"></a></p>
+		</div>
 		<div id="interne">
 			<?php
 				// --------------------------------------------
@@ -54,12 +60,12 @@ include 'view/includes/header.php';
 				// Donc tant qu'il y a une requête SQL dans $etudiant
 				while ($etudiant = $nomEtudiant->fetch()) {
 					// Affichage du nom et du prénom maintenant stockées dans la variable $etudiant
-					echo '<h1><div style="margin-left: 27%; width: 445px;">'.$etudiant['Nom_etudiant']. ' ' .$etudiant['Prenom_etudiant'].'</div></h1>';
+					echo '<h1><div style="margin-left: 25%; width: 300px; margin-top: 50px;">'.$etudiant['Nom_etudiant']. ' ' .$etudiant['Prenom_etudiant'].'</div></h1>';
 				}
 
 				// Affichage de la classe de l'étudiant
 				$classe = $classeEtudiant->fetch();
-				echo '<h1><div style="margin-left: 42%;">'.$classe['Nom_classe'].'</div></h1><br />';	
+				echo '<h1><div style="margin-left: 37%;">'.$classe['Nom_classe'].'</div></h1><br />';	
 			?>
 
 			<div class="coprsBilan">
@@ -79,7 +85,7 @@ include 'view/includes/header.php';
 						// Affichage du bilan de stage
 						$obsBilan = $observationEtudiant->fetch();
 						echo '<br /><br /><p>Bilan du stage :</p><br />';
-						echo $obsBilan['Observations_stage'];
+						echo '<span style="text-shadow: 0.9px 0.7px grey; color: grey;">'.$obsBilan['Observations_stage'].'</pan>';
 					?>
 				</div>
 			</div>
@@ -90,9 +96,10 @@ include 'view/includes/header.php';
 				while ($obsVisite = $observationEtudiant->fetch()) {
 					?>
 						<div class="obsVisite">
+						
+						<!-- Affichage des observations maintenant stockées dans la variable $obsVisite -->
+						<br /><br /><p>Observation :</p><br />
 						<?php
-						// Affichage des observations maintenant stockées dans la variable $obsVisite
-						echo '<br /><br /><div style="margin-left: 40%; font-weight: bold;">Observation :</div><br />';
 						echo $obsVisite['Observations_visite'];
 						?>
 						</div>
@@ -100,11 +107,12 @@ include 'view/includes/header.php';
 				}	
 			?>
 		</div>
+
+		<?php 
+		// On inclue le footer à la page
+		include 'view/includes/footer.php';
+		?>
 	</div>			
 </div> 
 
 
-<?php 
-// On inclue le footer à la page
-include 'view/includes/footer.php';
-?>

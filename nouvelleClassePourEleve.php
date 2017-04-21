@@ -16,18 +16,48 @@
 					<br>
 					<br>
 
-					<form action="index.php" method="GET" >
+					<form action="index.php" method="POST" >
 						<label>Classe :</label>
 			        		<select name="classe" id="classe">
-			           			<option value="bts1">BTS 1</option>
-			           			<option value="bts2">BTS 2</option>
-			        		</select>
+		        		<?php 
+		           			$query = $bdd->prepare('SELECT Nom_classe, Id_classe FROM classe');
+		           			$query->execute();
+		           			$results = $query->fetchAll();
+
+
+		           			foreach ($results as $classe) 
+		           			{
+						?>
+
+        					<option value="<?php echo $classe['Id_classe']; ?>">
+    							<?php echo $classe['Nom_classe']; ?>
+        					</option>
+    					<?php
+							}
+						?>
+			        </select>
 
 				        <br>
 				        <br>
 
 				        <label>Année :</label>
-				           <select id="year"></select>
+				           <select name="annee" id="annee">
+				           	<?php 
+		           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee');
+		           			$query->execute();
+		           			$resultatAnnee = $query->fetchAll();
+
+				        	foreach ($resultatAnnee as $Annee) 
+		           			{
+							?>
+
+        					<option value="<?php echo $Annee['Id_date_annee']; ?>">
+    							<?php echo $Annee['Annee']; ?>
+        					</option>
+    						<?php
+							}
+							?>
+				           </select>
 				    <br>
 				    <input type="submit" name="historiqueEleveValider" value="Valider">
 

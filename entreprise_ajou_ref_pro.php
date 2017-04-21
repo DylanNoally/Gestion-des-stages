@@ -12,9 +12,11 @@ include 'view/includes/header.php';
 <!-- Le corps de la page -->
 <div class="container">
 	<div id="content">
+		<!-- Responsive -->
 		<div style="float: left;">
 			<?php include 'view/includes/responsiveMenuGauche.php'; ?>
 		</div>
+		
 		<div id="interne_ref">
 			<h1>Entreprises</h1>
 			<h2>Ajouter un référent professionnel :</h2>

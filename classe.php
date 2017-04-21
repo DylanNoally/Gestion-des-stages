@@ -8,25 +8,29 @@ session_start();
 include 'view/includes/header.php';
 
 // On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-include 'view/includes/retourEnForce.php';
+//include 'view/includes/retourEnForce.php';
 
 //
-require 'view/includes/traitementRechercheEleve.php';
-
+//require 'view/includes/traitementRechercheEleve.php';
 ?>
 
 <!-- Le corps de la page -->
 <div class="container">
 	<div id="content">
+		<!-- Responsive -->
+			<div style="float: left;">
+				<?php include 'view/includes/responsiveMenuGauche.php'; ?>
+			</div>
+			
 		<div id="interne_classe">
 			<h1>Classe BTS1</h1>
 			<h3>Historique des éléves par année</h3>
-
+			<div id="bouton_nouv_annee">
 			<!-- Bouton "Ajouter une année" qui nous redirigera vers la page "Classe : nouvelle année"-->
-			<div id="year_button">
-				<p><a href="#"><img src="public/img/bouton_nv_classe.png" alt="Image bouton nouvelle classe" title="Nouvelle classe"></a></p>
+			
+				<p><a href="#"><img src="public/img/bouton_nv_classe.png" alt="Image bouton nouvelle année" title="Ajouter une année"></a></p>
+			
 			</div>
-
 			<div id="table_class">
 				<?php
 					// --------------------------------------------
@@ -71,6 +75,7 @@ require 'view/includes/traitementRechercheEleve.php';
 							<th>N° téléphone</th>
 							<th>Année obtention BAC</th>
 							<th>Action</th>
+							<th>Editer</th>
 						</tr>
 					</thead>
 
@@ -83,7 +88,7 @@ require 'view/includes/traitementRechercheEleve.php';
 							if (!empty($annee)) {
 								// Afficher l'année qui se trouve dans la première clé de l'array $annee qui est lui_même l'array $eleves auquel il y a les valeurs de la variable $results
 								// Puis incrémentation gràce à la boucle foreach
-								echo $annee[0]['Annee'];
+								echo '<b>'.$annee[0]['Annee'].'</b>';
 							foreach ($annee as $etudiant) {
 						?>
 						<tr>
@@ -125,6 +130,7 @@ require 'view/includes/traitementRechercheEleve.php';
 								<!-- Auquel se trouve l'étudiant et auquel il y a l'identifiant de l'étudiant ("Id_etudiant" qui fait partie des coordonnées des étudiants) passé en paramètre dans l'URL -->
 								<!-- Puis incrémentation gràce à la boucle foreach -->
 								<td><a href="detail_stage.php?id_etudiant=<?php echo $etudiant['Id_etudiant']; ?>">Voir détail</a></td>
+								<td><a href="#">Edit</a></td>
 						<?php
 								}
 							}
@@ -138,10 +144,9 @@ require 'view/includes/traitementRechercheEleve.php';
 				</table>
 			</div>
 		</div>
+		<?php 
+			// On inclue le footer à la page
+			include 'view/includes/footer.php';
+		?>
 	</div>
 </div>		
-
-<?php 
-// On inclue le footer à la page
-include 'view/includes/footer.php';
-?>

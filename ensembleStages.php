@@ -11,10 +11,26 @@
     	     <h3>Historique des stages</h3>
         </div>
         <div class="right1">
-    	     <input type="button" value="Ajouter un stage" onclick="html:location.href='nouvelleClasse.php'">
+            <form action="stage.php" method="GET">
+    	      <input type="button" value="Ajouter un stage">
+            </form>
     	 </div>
       </div>
-      <br> 
+      <br>
+          <?php
+                    
+            $query = $bdd->prepare('SELECT Annee, Nom_entreprise, Nom_referent_peda, Nom_referent_pro
+                        FROM stage, annee, entreprise, referent_peda, referent_pro
+                        WHERE stage.Id_date_annee=annee.Id_date_annee
+                        AND stage.Id_entreprise=entreprise.Id_entreprise
+                        AND stage.Id_referent_pro=referent_pro.Id_referent_pro
+                        AND stage.Id_referent_peda=referent_peda.Id_referent_peda');
+
+                    
+          $query->execute();
+          $results = $query->fetchAll();
+          ?> 
+
 		<table border class="table11">
    			<thead> <!-- En-tête du tableau -->
        			<tr>
@@ -25,70 +41,35 @@
            			<th>Action</th>
        			</tr>
    			</thead>
-
+          <?php         
+          foreach ($results as $eleve) 
+                    
+          {
+          ?>
    			<tbody> <!-- Corps du tableau -->
    				<tr>
-   					<td><?php $query = $bdd->prepare('SELECT Annee FROM annee WHERE Id_date_annee =2');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Annee'];
-                                 } 
-            ?></td>
-   					<td><?php $query = $bdd->prepare('SELECT Nom_entreprise FROM entreprise WHERE Id_entreprise =2');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Nom_entreprise'];
-                                 } 
-            ?></td>
-   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_peda FROM referent_peda WHERE Id_referent_peda =1');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Nom_referent_peda'];
-                                 } 
-            ?></td>
-   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_pro FROM referent_pro WHERE Id_referent_pro =1');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Nom_referent_pro'];
-                                 } 
-            ?></td>
-   					<td>Voir détails</td>
+            <td><option value="<?php echo $eleve['Id_etudiant']; ?>">
+                <?php echo $eleve['Annee']; ?>
+                </option>                
+            </td>
+            <td><option value="<?php echo $eleve['Id_etudiant']; ?>">
+                <?php echo $eleve['Nom_entreprise']; ?>
+                </option>
+            </td>
+            <td><option value="<?php echo $eleve['Id_etudiant']; ?>">
+                <?php echo $eleve['Nom_referent_peda']; ?>
+                </option>
+            </td>
+            <td><option value="<?php echo $eleve['Id_etudiant']; ?>">
+                <?php echo $eleve['Nom_referent_pro']; ?>
+                </option>
+            </td>
+            <!-- voir détails gradi -->              
+   					<td><a href="detail_stage.php?id_etudiant=<?php echo $etudiant['Id_etudiant']; ?>">Voir détails</a> </td>
    				</tr>
-   				<tr>
-   					<td><?php $query = $bdd->prepare('SELECT Annee FROM annee WHERE Id_date_annee =1');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Annee'];
-                                 } 
-            ?></td>
-   					<td><?php $query = $bdd->prepare('SELECT Nom_entreprise FROM entreprise WHERE Id_entreprise =1');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Nom_entreprise'];
-                                 } 
-            ?></td>
-   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_peda FROM referent_peda WHERE Id_referent_peda =1');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Nom_referent_peda'];
-                                 } 
-            ?></td>
-   					<td><?php $query = $bdd->prepare('SELECT Nom_referent_pro FROM referent_pro WHERE Id_referent_pro =2');
-                                 $query->execute();
-                                 while ($results = $query->fetch())
-                                 {
-                                 echo $results['Nom_referent_pro'];
-                                 } 
-            ?></td>
-   					<td>Voir détails</td>
-   				</tr>
-   			</tbody>
 
+   			</tbody>
+        <?php
+        }
+        ?>  
 		</table>		

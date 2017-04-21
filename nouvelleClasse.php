@@ -1,17 +1,19 @@
 	<?php
 		session_start();
 		include 'view/includes/header.php';
+		include 'view/includes/connexionBD.php';
+		include 'view/includes/traitementNouvelleClasse.php';
 	?>
 
 		<h1>Suivi Scolarité</h1>
 		<br>
 		<h3>Ajouter une nouvelle classe</h3>
 		<br>
-		Libellé : <input type="textarea" class="textarea1" name="LibelléClasse">
+		<form method="post" action="stage.php">
+		Libellé : <input type="text" class="text1" name="LibelléClasse">
 		<br><br>
-		Désignation : <input type="textarea" class="textarea2" name="Désignation">
-		<br> <br>
 		<div class='bouton213'>
-		<input type="submit" name="Valider">
-		<input type="reset" name="Annuler">
+		<input type="submit" name="BoutonAjoutClasse" value="Valider">
+		</form>
+		<input type="reset" name="BoutonReset" value="Réinitialiser" onclick="nouvelleClasse.php">
 		</div>

@@ -1,21 +1,57 @@
-<ul class="main-menu">
-	<li>
-		<a href="index.php" class="active">Accueil</a>
-	</li>
+<!-- Menu déroulant -->
+<div class="menu_principal">
 
-	<li>
-		<a href="#">Stages</a>
-	</li>
+	<ul id="nav">
 
-	<li>
-		<a href="entreprise_ajou_ref_pro.php">Entreprises</a>
-	</li>
-	
-	<li>
-		<a href="classe.php">Classes</a>
-	</li>
+		<li><a href="index.php">Accueil</a></li>
 
-	<li>
-		<a href="#">Suivi de scolarité</a>
-	</li>
-</ul>
+		<li><a class="fly" href="#" tabindex="1">Stages</a>
+
+			<ul class="dd">
+
+				<li><a href="###">Nouveau stage</a></li>
+
+				<li><a href="###">Historique des stages</a></li>
+
+				<li><a href="stage.php">Recherche d'un étudiant</a></li>
+
+			</ul>
+
+		</li>
+
+		<li><a class="fly" href="#" tabindex="1">Entreprises</a>
+
+			<ul class="dd">
+
+				<li><a href="###">Recherche d'une entreprise</a></li>
+
+				<li><a href="entreprise_ajou_ref_pro.php">Ajouter un référent professionnel</a></li>
+
+			</ul>
+
+		</li>
+
+		<li><a href="classe.php">Classes</a></li>
+
+		<li><a class="fly" href="#" tabindex="1">Suivi scolarité</a>
+
+			<ul class="dd">
+
+				<li><a href="###">Recherche classe/étudiant</a></li>
+
+				<li><a href="###">Ajouter une nouvelle classe</a></li>
+
+				<li><a href="###">Ajouter un élève</a></li>
+
+				<li><a href="###">Liste des BAC</a></li>
+
+				<li><a href="###">Liste des années scolaires</a></li>
+
+			</ul>
+
+		</li>
+
+	</ul>
+
+</div>
+

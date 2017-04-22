@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="public/css/os.css">
+	<link rel="stylesheet" href="public/css/x.css">
+	<link rel="stylesheet" href="public/css/naav.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="public/css/stylesheet.css" type="text/css" charset="utf-8" />
 	<title>Acceuil</title>
 </head>
@@ -18,11 +19,11 @@
 				<h1>Gestion des stages</h1>
 			</div>
 				<?php
-					// On inclue le menu
-					include 'view/includes/menugauche.php';
-
 					// On inclue la connexion à la page
 					include 'view/includes/menudroit.php';
+
+					// On inclue le menu
+					include 'view/includes/menugauche.php';
 
 					// On inclue la connexion à la base de données
 					include 'view/includes/connexionBD.php';

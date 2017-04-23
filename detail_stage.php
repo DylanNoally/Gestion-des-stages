@@ -2,20 +2,21 @@
 // On démarre la session AVANT d'écrire du code HTML
 session_start();
 
-// Traitement du paramettre de la page "classe" passé dans l'URL
-$idEtudiant = 0;
-//$_GET['id_etudiant'];
-
 // On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
 //include 'view/includes/retourEnForce.php';
 
 // On inclue le menu et la connexion à la page
 include 'view/includes/header.php';
+
+// Traitement du paramettre de la page "classe" passé dans l'URL
+$idEtudiant = 0;
+//$_GET['id_etudiant'];
 ?>
 
 <!-- Le corps de la page -->
 <div class="container">
 	<div id="content">
+		<!-- Responsive -->
 		<div style="float: left;">
 			<?php include 'view/includes/responsiveMenuGauche.php'; ?>
 		</div>
@@ -60,12 +61,12 @@ include 'view/includes/header.php';
 				// Donc tant qu'il y a une requête SQL dans $etudiant
 				while ($etudiant = $nomEtudiant->fetch()) {
 					// Affichage du nom et du prénom maintenant stockées dans la variable $etudiant
-					echo '<h1><div style="margin-left: 25%; width: 300px; margin-top: 50px;">'.$etudiant['Nom_etudiant']. ' ' .$etudiant['Prenom_etudiant'].'</div></h1>';
+					echo '<h1><div style="text-align: center; margin-top: 50px;">'.$etudiant['Nom_etudiant']. ' ' .$etudiant['Prenom_etudiant'].'</div></h1>';
 				}
 
 				// Affichage de la classe de l'étudiant
 				$classe = $classeEtudiant->fetch();
-				echo '<h1><div style="margin-left: 37%;">'.$classe['Nom_classe'].'</div></h1><br />';	
+				echo '<h1><div style="text-align: center;">'.$classe['Nom_classe'].'</div></h1><br />';	
 			?>
 
 			<div class="coprsBilan">

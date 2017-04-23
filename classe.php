@@ -28,7 +28,7 @@ include 'view/includes/header.php';
 			<div id="bouton_nouv_annee">
 			<!-- Bouton "Ajouter une année" qui nous redirigera vers la page "Classe : nouvelle année"-->
 			
-				<p><a href="#"><img src="public/img/bouton_nv_classe.png" alt="Image bouton nouvelle année" title="Ajouter une année"></a></p>
+				<p><a href="nouvelleAnnee.php"><img src="public/img/bouton_nv_classe.png" alt="Image bouton nouvelle année" title="Ajouter une année"></a></p>
 			
 			</div>
 			<div id="table_class">

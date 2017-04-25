@@ -1,10 +1,16 @@
-	<?php
+<?php
 	// On démarre la session AVANT d'écrire du code HTML
 	session_start();
 
 	// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
 	//include 'view/includes/retourEnForce.php';
 
+	include 'view/includes/avant_header.php';
+?>
+	<title>Recherche d'un étudiant</title>
+</head>
+
+<?php 
 	// On inclue le menu et la connexion à la page
 	include 'view/includes/header.php';
 ?>

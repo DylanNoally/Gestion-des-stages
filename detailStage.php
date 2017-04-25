@@ -5,12 +5,18 @@ session_start();
 // On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
 //include 'view/includes/retourEnForce.php';
 
-// On inclue le menu et la connexion à la page
-include 'view/includes/header.php';
+include 'view/includes/avant_header.php';
+?>
+	<title>Détail du stage</title>
+</head>
 
-// Traitement du paramettre de la page "classe" passé dans l'URL
-$idEtudiant = 0;
-//$_GET['id_etudiant'];
+<?php 
+	// On inclue le menu et la connexion à la page
+	include 'view/includes/header.php';
+
+	// Traitement du paramettre de la page "classe" passé dans l'URL
+	$idEtudiant = 0;
+	//$_GET['id_etudiant'];
 ?>
 
 <!-- Le corps de la page -->

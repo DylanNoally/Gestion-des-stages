@@ -1,17 +1,23 @@
 <!-- Inclusion des éléments de la page -->
 
 <?php
-// On démarre la session AVANT d'écrire du code HTML
-session_start();
+	// On démarre la session AVANT d'écrire du code HTML
+	session_start();
 
-// On inclue le menu et la connexion à la page
-include 'view/includes/header.php';
+	include 'view/includes/avant_header.php';
+?>
+	<title>Classe</title>
+</head>
 
-// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-//include 'view/includes/retourEnForce.php';
+<?php 
+	// On inclue le menu et la connexion à la page
+	include 'view/includes/header.php';
 
-//
-//require 'view/includes/traitementRechercheEleve.php';
+	// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
+	//include 'view/includes/retourEnForce.php';
+
+	//
+	//require 'view/includes/traitementRechercheEleve.php';
 ?>
 
 <!-- Le corps de la page -->

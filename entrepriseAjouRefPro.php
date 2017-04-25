@@ -5,8 +5,14 @@ session_start();
 // On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
 //include 'view/includes/retourEnForce.php';
 
-// On inclue le menu et la connexion à la page
-include 'view/includes/header.php';
+include 'view/includes/avant_header.php';
+?>
+	<title>Ajouter un référent professionnel</title>
+</head>
+
+<?php 
+	// On inclue le menu et la connexion à la page
+	include 'view/includes/header.php';
 ?>
 
 <!-- Le corps de la page -->
@@ -23,7 +29,7 @@ include 'view/includes/header.php';
 
 			<!-- Ajout d'un référent -->
 			<div id="ecart1">
-				<form method="POST" action="entreprise_ajou_ref_pro.php">
+				<form method="POST" action="entrepriseAjouRefPro.php">
 					<p>
 						<label for="nom">Nom du référent</label> : 
 						<div class="nomRef">

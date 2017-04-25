@@ -26,9 +26,9 @@
 
       <ul class="subs">
 
-        <li><a href="###">Recherche d'une entreprise</a></li>
+        <li><a href="entreprise.php">Recherche et ajout d'une entreprise</a></li>
 
-        <li><a href="entreprise_ajou_ref_pro.php">Ajouter un référent professionnel</a></li>
+        <li><a href="entrepriseAjouRefPro.php">Ajouter un référent professionnel</a></li>
 
       </ul>
 
@@ -48,7 +48,7 @@
 
         <li><a href="###">Liste des BAC</a></li>
 
-        <li><a href="###">Liste des années scolaires</a></li>
+        <li><a href="###">Liste des années scolaires / Ajouter une année</a></li>
 
       </ul>
 

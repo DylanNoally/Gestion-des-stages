@@ -46,9 +46,9 @@
 
         <li><a href="###">Ajouter un élève</a></li>
 
-        <li><a href="###">Liste des BAC</a></li>
+        <li><a href="typesDeBAC.php">Liste des BAC et ajout d'un BAC</a></li>
 
-        <li><a href="###">Liste des années scolaires / Ajouter une année</a></li>
+        <li><a href="###">Liste des années scolaires et ajout d'une année</a></li>
 
       </ul>
 

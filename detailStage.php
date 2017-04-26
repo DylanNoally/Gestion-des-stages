@@ -16,7 +16,16 @@ include 'view/includes/avant_header.php';
 
 	// Traitement du paramettre de la page "classe" passé dans l'URL
 	$idEtudiant = 0;
-	//$_GET['id_etudiant'];
+	/**
+	if (isset($_GET['id_etudiant'])) {
+		if ($_GET['id_etudiant'] != 'int' && $_GET['id_etudiant'] == 'bool') {
+			// On execute rien	
+		}
+		else { 
+			$idEtudiant = $_GET['id_etudiant'];
+		}
+	}
+	**/
 ?>
 
 <!-- Le corps de la page -->

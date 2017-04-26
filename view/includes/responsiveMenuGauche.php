@@ -42,7 +42,7 @@
 
         <li><a href="###">Recherche classe/étudiant</a></li>
 
-        <li><a href="###">Ajouter une classe</a></li>
+        <li><a href="nouvelleClasse.php">Ajouter une classe</a></li>
 
         <li><a href="###">Ajouter un élève</a></li>
 

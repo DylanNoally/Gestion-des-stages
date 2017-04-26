@@ -12,7 +12,11 @@ if (key_exists('login', $_SESSION))
 else
 {
 	// Si l'utilisateur n'est pas connecté, il sera renvoyer à la page d'acceuil ("index.php")
-	header('Location: ../exercice/index.php');
+	?>
+	<script type="text/javascript"> 
+		alert("Veuillez vous connecter !");
+		window.location.replace("../projet/index.php"); 
+	</script> 
+	<?php
 }
-
 ?>

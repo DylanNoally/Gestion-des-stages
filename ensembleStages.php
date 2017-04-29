@@ -19,7 +19,6 @@
           /* Si le resultat du formulaire concernant la valeur de la classe choisie
           est correct, alors on recherche à partir de celle-ci le nom de la classe associé et on l'affiche */
                     { 
-                        var_dump($_SESSION['idClasse']);
                         foreach ($results2 as $recherche2) 
                         {
                             if($_SESSION['idEleve'] == $recherche2['Id_etudiant'])

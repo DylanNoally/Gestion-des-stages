@@ -16,7 +16,7 @@
 					<br>
 					<br>
 
-					<form action="index.php" method="POST" >
+					<form action="eleve.php" method="POST" >
 						<label>Classe :</label>
 			        		<select name="classe" id="classe">
 		        		<?php 
@@ -58,6 +58,7 @@
 							}
 							?>
 				           </select>
+				    <br>
 				    <br>
 				    <input type="submit" name="historiqueEleveValider" value="Valider">
 

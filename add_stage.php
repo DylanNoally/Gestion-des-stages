@@ -22,13 +22,12 @@
 <div class="container">
 		<div id="content">
 			<div class="left">
-				<h2><?php if(key_exists('prenomEleve', $_SESSION) && key_exists('nomEleve', $_SESSION))
+				<h2><?php if(key_exists('idClasse',$_SESSION) && key_exists('idEleve',$_SESSION)) 
           		/* Si le resultat du formulaire concernant la valeur de la classe choisie
           		est correct, alors on recherche à partir de celle-ci le nom de la classe associé et on l'affiche */
           					{
-	                                echo $_SESSION['prenomEleve']." ";
-                                	echo $_SESSION['nomEleve']." - ";
-	                                echo $_SESSION['nomClasse'];
+								echo $_SESSION['NomEleve'];
+	                            echo $_SESSION['NomClasse'];
 	                        }
 
 	                    else 

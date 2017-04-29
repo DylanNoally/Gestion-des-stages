@@ -2,4 +2,32 @@
 //  Récapitulatifs des Mises à jour faîtes sur le Projet
 //============================================================================
 
-// Dylan Noally 29/04/2017
+
+
+======= Dylan Noally 29/04/2017 =======
+
+
+-- traitementRechercheStage.php --
+
+	- Modification des variables récupérant les informations sur l'élève recherché dans une super globale $_SESSION
+	  pouvant être réutiliser sur certaines pages du projet.
+
+
+-- ensembleStage.php --
+
+	- Mise à jour du contrôle de vérification sur l'élève et la classe recherché sur la page EnsembleStage.php et création de deux super globale :
+
+	  $_SESSION['NomEleve'];	// Récupère le nom (et prénom) de l'élève recherché pouvant être réutilisée sur la majorité des pages du projet
+
+	  $_SESSION['NomClasse'];	// Récupère le nom de la classe recherché pouvant être réutilisée sur la majorité des pages du projet
+
+
+-- add_stage.php --
+
+	- Mise à jour du contrôle de vérification sur l'élève et la classe recherché sur la page add_stage.php en réutilisant les deux super globale :  $_SESSION['idClasse']   et    $_SESSION['idEleve']
+
+	- Réctification de l'affichage du nom (et prénom) de l'élève et de sa classe
+
+
+
+	

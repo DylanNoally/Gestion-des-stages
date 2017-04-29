@@ -51,4 +51,4 @@
 						Adresse postale :<input type="text" name="adressePostale">
 						<br><br>
 						<div align="center"><input type="submit" name="creerEntreprise" value="Valider"></div>
-					</form>
+					</form> 

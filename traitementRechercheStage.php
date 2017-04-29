@@ -4,12 +4,12 @@
 
 		if(isset($_GET["classe"]))
 		{
-			$resultatClasse = $_GET["classe"];
+			$_SESSION['idClasse'] = $_GET["classe"];
 		}
 
 		if(isset($_GET["eleve"]))
 		{
-			$resultatEleve = $_GET["eleve"];
+			$_SESSION['idEleve'] = $_GET["eleve"];
 		}
 	}
 ?>

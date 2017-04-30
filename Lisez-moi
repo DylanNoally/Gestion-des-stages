@@ -21,6 +21,18 @@
 	  d'afficher le nom de celle-ci dans la page web.
 
 
+// nouvelleAnnee.php \\
+
+	- Remise à niveau de la requête concernant les années extraites et affichées afin que celles-ci puisse être triées
+	  pour améliorer le confort de l'utilisateur.
+
+
+// stage.php \\
+
+	- Remise à niveau de la requête concernant les étudiants extraits et affichés afin que qu'ils soient triés
+	  pour améliorer le confort de l'utilisateur.
+
+
 
 
 

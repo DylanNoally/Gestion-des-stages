@@ -29,147 +29,148 @@
 								echo $_SESSION['NomEleve'];
 	                            echo $_SESSION['NomClasse'];
 	                        }
-
-	                    else 
-	                    { 
-	                        echo "Erreur de traitement des informations"; 
-	                    } 
-	                    ?>
-                       </h2>
-					<br>
-					
-					<h2>Nouveau Stage</h2>
-
-					<br>
-					<br>
-					<form action="ensembleStages.php" method="POST" >
-						<label>Entreprise existante :</label>
-				        <select name="entrepriseExistante" id="entrepriseExistante">
-				        <?php 
-		           			$query = $bdd->prepare('SELECT Id_entreprise, Nom_entreprise FROM entreprise');
-		           			$query->execute();
-		           			$resultatNomEntreprise = $query->fetchAll();
-
-				        	foreach ($resultatNomEntreprise as $nomEntreprise) 
-		           			{
-							?>
-
-        					<option value="<?php echo $nomEntreprise['Id_entreprise']; ?>">
-    							<?php echo $nomEntreprise['Nom_entreprise']; ?>
-        					</option>
-    					<?php
-							}
-						?>
-				        </select>
-				        <br>
-				        <br>
-
-				        <label>Responsable pédagogique :</label>
-				        <select name="respPedagogiqueExistant" id="respPedagogiqueExistant">
-				           <?php 
-		           			$query = $bdd->prepare('SELECT Id_referent_peda, Nom_referent_peda FROM referent_peda');
-		           			$query->execute();
-		           			$resultatNomRefPeda = $query->fetchAll();
-
-				        	foreach ($resultatNomRefPeda as $nomRefPeda) 
-		           			{
-							?>
-
-        					<option value="<?php echo $nomRefPeda['Id_referent_peda']; ?>">
-    							<?php echo $nomRefPeda['Nom_referent_peda']; ?>
-        					</option>
-    					<?php
-							}
-						?>
-				        </select>
-
-				        <br>
-				  		<br>
-
-				        <label>Responsable technique :</label>
-				        <select name="respTechniqueExistant" id="respTechniqueExistant">
-				           <?php 
-		           			$query = $bdd->prepare('SELECT Id_referent_pro, Nom_referent_pro FROM referent_pro');
-		           			$query->execute();
-		           			$resultatNomRefPro = $query->fetchAll();
-
-				        	foreach ($resultatNomRefPro as $nomRefPro) 
-		           			{
-							?>
-
-        					<option value="<?php echo $nomRefPro['Id_referent_pro']; ?>">
-    							<?php echo $nomRefPro['Nom_referent_pro']; ?>
-        					</option>
-    					<?php
-							}
-						?>
-				        </select>
-
-				        <br>
-				        <br>
-
-				        <label>Technologies pratiquées :</label>
-				        <select size="6" name="TechnosPratiques" multiple="multiple">
-						    <?php 
-		           			$query = $bdd->prepare('SELECT Id_techno, Nom_techno FROM techno');
-		           			$query->execute();
-		           			$resultatTechnos = $query->fetchAll();
-
-				        	foreach ($resultatTechnos as $technos) 
-		           			{
-							?>
-
-        					<option value="<?php echo $technos['Id_techno']; ?>">
-    							<?php echo $technos['Nom_techno']; ?>
-        					</option>
-    					<?php
-							}
-						?>
-						 </select>
+		                    else 
+		                    { 
+		                        echo "Erreur de traitement des informations"; 
+		                    } 
+		                    ?>
+	                       </h2>
+						<br>
+						
+						<h2>Nouveau Stage</h2>
 
 						<br>
 						<br>
+						<form action="ensembleStages.php" method="POST" >
+							<label>Entreprise existante :</label>
+					        <select name="entrepriseExistante" id="entrepriseExistante">
+					        <?php 
+			           			$query = $bdd->prepare('SELECT Id_entreprise, Nom_entreprise FROM entreprise');
+			           			$query->execute();
+			           			$resultatNomEntreprise = $query->fetchAll();
 
-						<label>Année concernée :</label>
-				           <select name="annee" id="annee">
-				           	<?php 
-		           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee');
-		           			$query->execute();
-		           			$resultatAnnee = $query->fetchAll();
+					        	foreach ($resultatNomEntreprise as $nomEntreprise) 
+			           			{
+								?>
 
-				        	foreach ($resultatAnnee as $Annee) 
-		           			{
+	        						<option value="<?php echo $nomEntreprise['Id_entreprise']; ?>">
+	    								<?php echo $nomEntreprise['Nom_entreprise']; ?>
+	        						</option>
+	    					<?php
+								}
 							?>
+					        </select>
+					        <br>
+					        <br>
 
-        					<option value="<?php echo $Annee['Id_date_annee']; ?>">
-    							<?php echo $Annee['Annee']; ?>
-        					</option>
-    						<?php
-							}
+					        <label>Responsable pédagogique :</label>
+					        <select name="respPedagogiqueExistant" id="respPedagogiqueExistant">
+					           <?php 
+			           			$query = $bdd->prepare('SELECT Id_referent_peda, Nom_referent_peda FROM referent_peda');
+			           			$query->execute();
+			           			$resultatNomRefPeda = $query->fetchAll();
+
+					        	foreach ($resultatNomRefPeda as $nomRefPeda) 
+			           			{
+								?>
+
+		        					<option value="<?php echo $nomRefPeda['Id_referent_peda']; ?>">
+		    							<?php echo $nomRefPeda['Nom_referent_peda']; ?>
+		        					</option>
+	    					<?php
+								}
 							?>
-				           </select>
+					        </select>
 
-						<br>
-						<br>
+					        <br>
+					  		<br>
 
-						<label>Date début :</label>
-				           <input type="date" name="dateDebut"/>
-				           
-				        <label>Date Fin :</label>
-				           <input type="date" name="dateFin"/>
+					        <label>Responsable technique :</label>
+					        <select name="respTechniqueExistant" id="respTechniqueExistant">
+					           <?php 
+			           			$query = $bdd->prepare('SELECT Id_referent_pro, Nom_referent_pro FROM referent_pro');
+			           			$query->execute();
+			           			$resultatNomRefPro = $query->fetchAll();
 
-				        <br>
-				        <br>
-				        <div align="center"><input type="submit" name="creerStage" value="Créer un Stage"></div>
+					        	foreach ($resultatNomRefPro as $nomRefPro) 
+			           			{
+								?>
 
-						<br>
-				        <br>
-				        <br>
-				        <br>
-				        <br>
-				        <br>
-				        <br>
-				        <?php
-				      		include 'view/includes/footer.php';
-				      	?>
-				    </form>
+		        					<option value="<?php echo $nomRefPro['Id_referent_pro']; ?>">
+		    							<?php echo $nomRefPro['Nom_referent_pro']; ?>
+		        					</option>
+	    					<?php
+								}
+							?>
+					        </select>
+
+					        <br>
+					        <br>
+
+					        <label>Technologies pratiquées :</label>
+					        <select size="6" name="TechnosPratiques" multiple="multiple">
+							    <?php 
+			           			$query = $bdd->prepare('SELECT Id_techno, Nom_techno FROM techno');
+			           			$query->execute();
+			           			$resultatTechnos = $query->fetchAll();
+
+					        	foreach ($resultatTechnos as $technos) 
+			           			{
+								?>
+
+		        					<option value="<?php echo $technos['Id_techno']; ?>">
+		    							<?php echo $technos['Nom_techno']; ?>
+		        					</option>
+	    					<?php
+								}
+							?>
+							 </select>
+
+							<br>
+							<br>
+
+							<label>Année concernée :</label>
+					           <select name="annee" id="annee">
+					           	<?php 
+			           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee');
+			           			$query->execute();
+			           			$resultatAnnee = $query->fetchAll();
+
+					        	foreach ($resultatAnnee as $Annee) 
+			           			{
+								?>
+
+		        					<option value="<?php echo $Annee['Id_date_annee']; ?>">
+		    							<?php echo $Annee['Annee']; ?>
+		        					</option>
+	    						<?php
+								}
+								?>
+					           </select>
+
+							<br>
+							<br>
+
+							<label>Date début :</label>
+					           <input type="date" name="dateDebut"/>
+					           
+					        <label>Date Fin :</label>
+					           <input type="date" name="dateFin"/>
+
+					        <br>
+					        <br>
+					        <div align="center"><input type="submit" name="creerStage" value="Créer un Stage"></div>
+
+							<br>
+					        <br>
+					        <br>
+					        <br>
+					        <br>
+					        <br>
+					        <br>
+					        <?php
+					      		include 'view/includes/footer.php';
+					      	?>
+					    </form>
+
+					    

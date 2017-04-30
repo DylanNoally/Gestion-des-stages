@@ -19,7 +19,7 @@
 						<label>Année :</label>
 				           <select name="annee" id="annee">
 				           	<?php 
-		           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee');
+		           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee ORDER BY Annee ');
 		           			$query->execute();
 		           			$resultatAnnee = $query->fetchAll();
 

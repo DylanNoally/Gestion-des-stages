@@ -2,6 +2,9 @@
 //  Récapitulatifs des Mises à jour faîtes sur le Projet
 //============================================================================
 
+
+
+
 ======= Dylan Noally 30/04/2017 =======
 
 // traitementRechercheEntreprise.php \\
@@ -16,6 +19,7 @@
 
 	- Réalisation de la requête SQL (en PHP), qui permet de récupérer toutes les entreprises éxistantes dans la BD, dans le but
 	  d'afficher le nom de celle-ci dans la page web.
+
 
 
 

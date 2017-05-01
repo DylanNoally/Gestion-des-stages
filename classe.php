@@ -1,10 +1,13 @@
 <!-- Inclusion des éléments de la page -->
 
 <?php
-	// On démarre la session AVANT d'écrire du code HTML
-	session_start();
+		// On démarre la session AVANT d'écrire du code HTML
+		session_start();
 
-	include 'view/includes/avant_header.php';
+		// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
+		//include 'view/includes/retourEnForce.php';
+
+		include 'view/includes/avant_header.php';
 ?>
 	<title>Classe</title>
 </head>
@@ -13,11 +16,24 @@
 	// On inclue le menu et la connexion à la page
 	include 'view/includes/header.php';
 
-	// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-	//include 'view/includes/retourEnForce.php';
-
 	//
 	//require 'view/includes/traitementRechercheEleve.php';
+
+
+	/**
+		if (isset($_GET['la_classe'])) { // Le "name" du premier formulaire de la page 2. Suivi scolarité
+			
+			if (empty($_GET['la_classe'])) {
+				// On execute rien	
+			}
+			else { 
+				$nomClasse = $_GET['la_classe'];
+			}
+		}
+		$nomClasse = $bdd->prepare('SELECT Nom_classe FROM classe WHERE classe.Nom_classe = ?');
+		$nomClasse->execute(array($nomClasse));
+
+	**/
 ?>
 
 <!-- Le corps de la page -->
@@ -29,6 +45,16 @@
 			</div>
 			
 		<div id="interne_classe">
+			<!--
+			<?php
+				/**
+				while ($classe = $nomClasse->fetch()) {
+					// Affichage de la classe maintenant stockées dans la variable $classe
+					echo '<h1> Classe '.$etudiant['Nom_etudiant'].'</h1>';
+				}
+				**/
+			?>
+			-->
 			<h1>Classe BTS1</h1>
 			<h3>Historique des éléves par année</h3>
 			<div id="bouton_nouv_annee">

@@ -1,5 +1,4 @@
 <?php
-		// On démarre la session AVANT d'écrire du code HTML
 		session_start();
 
 		// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
@@ -7,15 +6,16 @@
 
 		include 'view/includes/avant_header.php';
 ?>
-	<title>Liste des BAC et ajout d'un BAC</title>
+	<title>Liste des années scolaires et ajout d'une année</title>
 </head>
 
 <?php 
 	// On inclue le menu et la connexion à la page
 	include 'view/includes/header.php';
 
-	include 'view/includes/traitementTypesBAC.php';
-?>
+	include 'view/includes/traitementAnneesScolaires.php';
+	include 'view/includes/traitementAnneesScolairesSuppr.php';    	
+	?>
 
 <div class="container">
 	<div id="content">
@@ -23,33 +23,33 @@
 		<div style="float: left;">
 			<?php include 'view/includes/responsiveMenuGauche.php'; ?>
 		</div>
-		<h1 class="typeBAC_titre">Suivi scolarité</h1>
-		<div id="typeBAC_corps">
-			<div class="typeBAC_ajouter">
-				<h3 class="typeBAC_ajouter_titre">Ajouter un nouveau BAC</h3>
-				<form class="typeBAC_formulaire" method="post" action="typesDeBAC.php">
-					<div class="typeBAC_input">					
+		<h1 class="anneesScolaire_titre">Suivi scolarité</h1>
+		<div id="anneesScolaire_corps">
+			<div class="anneesScolaire_ajouter">
+				<h3 class="anneesScolaire_ajouter_titre">Ajouter d'une année</h3>
+				<form class="anneesScolaire_formulaire" method="post" action="anneesScolaires.php">
+					<div class="anneesScolaire_input">					
 						Intitulé : <input type="text" class="text24" name="Intitulé">
 					</div>
-					<div class="typeBAC_ajouter">
+					<div class="anneesScolaire_ajouter">
 						<input type="submit" name="Ajouter" value="Ajouter">
 					</div>
 				</form>
 			</div>
 
-			<div class="typeBAC_liste">
-				<h3 class="typeBAC_liste_titre">Liste des BAC</h3>
+			<div class="anneesScolaire_liste">
+				<h3 class="anneesScolaire_liste_titre">Liste des années scolaires</h3>
 					<?php 
 					          
-					$query = $bdd->prepare('SELECT Libelle_type_bac, Id_type_bac FROM typebac');
-					          
+					$query = $bdd->prepare('SELECT Annee, Id_date_annee FROM annee');
+				          
 					$query->execute();
 					$results = $query->fetchAll();
 					?>				
-				<table class="typeBAC_tableau">
+				<table class="anneesScolaire_tableau">
 			   		<thead> <!-- En-tête du tableau -->
 			       		<tr>
-			           		<th class="text-left">Intitulé</th>
+			           		<th class="text-left">Année</th>
 			           		<th class="text-left">Actions</th>
 			       		</tr>
 			   		</thead>
@@ -58,23 +58,23 @@
 					          
 					{
 					?>			   		
-			   		<tbody class="typeBAC_tableau_corps">
+			   		<tbody class="anneesScolaire_tableau_corps">
 			   			<tr>
 			   				<td class="text-left">
-			   					<option value="<?php echo $eleve['Id_type_bac']; ?>">
-								<?php echo $eleve['Libelle_type_bac']; ?>
+			   					<option value="<?php echo $eleve['Id_date_annee']; ?>">
+								<?php echo $eleve['Annee']; ?>
 								</option>
 							</td>
 			   				<td class="text-left">
-			   					<form class="typeBAC_bouton" align="center" method="post" action="typesDeBAC.php">
+			   					<form class="anneesScolaire_bouton" align="center" method="post" action="anneesScolaires.php">
 			   					<input type="button" value="Supprimer" class="Suppr" name="Supprimer">
-			   					</form>
+			   					</form>	
 			   				</td>
 			   			</tr>		
 			   		</tbody>
 					<?php
 					}
-					?>				   		
+					?>	
 				</table>
 			</div>
 		</div>
@@ -83,4 +83,4 @@
 			include 'view/includes/footer.php';
 		?>
 	</div>
-</div>		
+</div>

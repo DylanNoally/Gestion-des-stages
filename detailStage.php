@@ -1,11 +1,11 @@
 <?php
-// On démarre la session AVANT d'écrire du code HTML
-session_start();
+		// On démarre la session AVANT d'écrire du code HTML
+		session_start();
 
-// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-//include 'view/includes/retourEnForce.php';
+		// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
+		//include 'view/includes/retourEnForce.php';
 
-include 'view/includes/avant_header.php';
+		include 'view/includes/avant_header.php';
 ?>
 	<title>Détail du stage</title>
 </head>
@@ -15,10 +15,12 @@ include 'view/includes/avant_header.php';
 	include 'view/includes/header.php';
 
 	// Traitement du paramettre de la page "classe" passé dans l'URL
-	$idEtudiant = 0;
+	$idEtudiant = 7;
 	/**
 	if (isset($_GET['id_etudiant'])) {
-		if ($_GET['id_etudiant'] != 'int' && $_GET['id_etudiant'] == 'bool') {
+		$_GET['id_etudiant'] = (int) $_GET['id_etudiant'];
+		
+		if (empty($_GET['id_etudiant'])) {
 			// On execute rien	
 		}
 		else { 
@@ -52,10 +54,15 @@ include 'view/includes/avant_header.php';
 				$nomEtudiant->execute(array($idEtudiant));	
 				// La fonction execute attribut au "?" la valeur dans la clé de l'array $idEtudiant en echapant(protegeant) la valeur
 
-				// Préparation de la requête SQL suivante : afficher les observations des visites et du stage de l'étudiant
-				// Les observations des visites et du stage de l'étudiant dont l'identifiant du stage est celui qui vient du paramettre passé dans l'URL
-				$observationEtudiant = $bdd->prepare('SELECT visite.Observations_visite, stage.Observations_stage FROM  visite, stage WHERE visite.Id_stage = stage.Id_stage AND stage.Id_etudiant = ?');
-				$observationEtudiant->execute(array($idEtudiant));
+				// Préparation de la requête SQL suivante : afficher les observations des visites de l'étudiant
+				// Les observations des visites de l'étudiant dont l'identifiant du stage est celui qui vient du paramettre passé dans l'URL
+				$observationVisiteEtudiant = $bdd->prepare('SELECT visite.Observations_visite FROM visite, stage WHERE visite.Id_stage = stage.Id_stage AND stage.Id_etudiant = ?');
+				$observationVisiteEtudiant->execute(array($idEtudiant));
+
+				// Préparation de la requête SQL suivante : afficher l'observation bilan du stage de l'étudiant
+				// L'observation bilan du stage de l'étudiant dont l'identifiant du stage est celui qui vient du paramettre passé dans l'URL
+				$observationBilanEtudiant = $bdd->prepare('SELECT stage.Observations_stage FROM stage WHERE stage.Id_etudiant = ?');
+				$observationBilanEtudiant->execute(array($idEtudiant));
 
 				// Préparation de la requête SQL suivante : afficher les classes et leur identifiant
 				// Les classes et leur identifiant pour l'étudiant dont l'identifiant du stage est celui qui vient du paramettre passé dans l'URL
@@ -89,17 +96,17 @@ include 'view/includes/avant_header.php';
 				<?php
 					// Affichage des caractéristiques liées au bilan
 					$caracBilan = $caracObsBilan->fetch();
-					echo '<b>Entreprise :</b>'.' '.'<div style="color: #DA6060; float: right; margin-right: 150px;">'.$caracBilan['Nom_entreprise'].'</div>';
-					echo '<br /><b>Référent pro :</b>'.' '.'<div style="color: #DA6060; float: right; margin-right: 89px;">'.$caracBilan['Nom_referent_pro'].'</div>';
-					echo '<br /><b>Référenet péda :</b>'.' '.'<div style="color: #DA6060; float: right; margin-right: 138px;">'.$caracBilan['Nom_referent_peda'].'</div>';
-					echo '<br /><b>Année concernée :</b>'.' '.'<div style="color: #DA6060; float: right; margin-right: 132px;">'.$caracBilan['Annee'].'</div>';
+					echo '<div style="display: inline-block; font-weight: bold; width: 130px; margin-bottom: 7px;">Entreprise</div>'.' '.'<div style="color: #DA6060; display: inline-block; width: 55%; text-align: center;">'.$caracBilan['Nom_entreprise'].'</div>';
+					echo '<br /><div style="display: inline-block; font-weight: bold; width: 130px; margin-bottom: 7px;">Référent pro</div>'.' '.'<div style="color: #DA6060; display: inline-block; width: 55%; text-align: center;">'.$caracBilan['Nom_referent_pro'].'</div>';
+					echo '<br /><div style="display: inline-block; font-weight: bold; width: 130px; margin-bottom: 7px;">Référenet péda</div>'.' '.'<div style="color: #DA6060; display: inline-block; width: 55%; text-align: center;">'.$caracBilan['Nom_referent_peda'].'</div>';
+					echo '<br /><div style="display: inline-block; font-weight: bold; width: 130px;">Année concernée</div>'.' '.'<div style="color: #DA6060; display: inline-block; width: 55%; text-align: center;">'.$caracBilan['Annee'].'</div>';
 				?>
 				</div>
 
 				<div class="obsBilan">
 					<?php
 						// Affichage du bilan de stage
-						$obsBilan = $observationEtudiant->fetch();
+						$obsBilan = $observationBilanEtudiant->fetch();
 						echo '<br /><br /><p>Bilan du stage :</p><br />';
 						echo '<span style="text-shadow: 0.9px 0.7px grey; color: grey;">'.$obsBilan['Observations_stage'].'</pan>';
 					?>
@@ -109,19 +116,20 @@ include 'view/includes/avant_header.php';
 			<h2>Visites liées au stage</h2>
 
 			<?php	
-				while ($obsVisite = $observationEtudiant->fetch()) {
-					?>
-						<div class="obsVisite">
-						
+				$obsVisite = $observationVisiteEtudiant->fetchAll();
+
+				foreach ($obsVisite as $observation) {
+			?>
+					<div class="obsVisite">
 						<!-- Affichage des observations maintenant stockées dans la variable $obsVisite -->
 						<br /><br /><p>Observation :</p><br />
 						<?php
-						echo $obsVisite['Observations_visite'];
+						echo $observation['Observations_visite'];
 						?>
-						</div>
-					<?php	
-				}	
-			?>
+					</div>
+				<?php
+				}
+				?>		
 		</div>
 
 		<?php 

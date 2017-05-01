@@ -50,7 +50,7 @@
 				/**
 				while ($classe = $nomClasse->fetch()) {
 					// Affichage de la classe maintenant stockées dans la variable $classe
-					echo '<h1> Classe '.$etudiant['Nom_etudiant'].'</h1>';
+					echo '<h1> Classe '.$etudiant['Nom_classe'].'</h1>';
 				}
 				**/
 			?>
@@ -161,8 +161,7 @@
 								<!-- Lorsque l'on clique sur "Voir détail" cela nous renvoi vers la page "detail_stage.php" -->
 								<!-- Auquel se trouve l'étudiant et auquel il y a l'identifiant de l'étudiant ("Id_etudiant" qui fait partie des coordonnées des étudiants) passé en paramètre dans l'URL -->
 								<!-- Puis incrémentation gràce à la boucle foreach -->
-								<td><a href="detail_stage.php?id_etudiant=<?php echo $etudiant['Id_etudiant']; ?>">Voir détail</a></td>
-								<td><a href="#">Edit</a></td>
+								<td><a href="#">Voir détail</a></td>
 						<?php
 								}
 							}

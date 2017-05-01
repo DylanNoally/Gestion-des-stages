@@ -25,7 +25,7 @@
 			<div class="nouvClassePourEleve">
 				<h1 class="nouvClassePourEleve_titre">// NOM ELEVE(BD) //</h1>
 				<h2 class="nouvClassePourEleve_sous_titre">Associer l'élève a une nouvelle classe</h2>
-					<form action="index.php" method="POST">
+					<form action="eleve.php" method="POST">
 						<div class="nouvClassePourEleve_corps">
 							<div class="nouvClassePourEleve_classe">
 								<label>Classe :</label>

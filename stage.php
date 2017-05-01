@@ -32,7 +32,7 @@
 							<div class="nomAnnee">
 						        <select name="classe" id="classe">
 					        		<?php 
-					           			$query = $bdd->prepare('SELECT Nom_classe, Id_classe FROM classe');
+					           			$query = $bdd->prepare('SELECT Nom_classe, Id_classe FROM classe ORDER BY Nom_classe');
 					           			$query->execute();
 					           			$results = $query->fetchAll();
 					           			foreach ($results as $classe) 
@@ -55,7 +55,7 @@
 							<div class="nomEleve"> 
 						        <select name="eleve" id="eleve"> 
 						            <?php 
-						           		$query = $bdd->prepare('SELECT Nom_etudiant, Prenom_etudiant, Id_etudiant FROM etudiant');
+						           		$query = $bdd->prepare('SELECT Nom_etudiant, Prenom_etudiant, Id_etudiant FROM etudiant ORDER BY Nom_etudiant');
 						           		$query->execute();
 										$results = $query->fetchAll();
 						           		foreach ($results as $eleve) 

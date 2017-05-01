@@ -7,7 +7,7 @@
 
 		include 'view/includes/avant_header.php';
 ?>
-	<title>Détail du stage</title>
+	<title>Mentions Légales</title>
 </head>
 
 <?php 
@@ -20,32 +20,33 @@
 			<div align="center">
 				<h2><u>MENTIONS LEGALES</u></h2>
 			</div>
-			<br>
-			<p>Le site Internet <a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a> est une œuvre de l’esprit protégée par les lois de la propriété intellectuelle. Le site et chacun des éléments qui le composent sont la propriété exclusive de <a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a>.</p>
+			<div class="mentionsLegales_corps">
+				<p>Le site Internet <a href="index.php">http://gestion-des-stages.fr/</a> est une œuvre de l’esprit protégée par les lois de la propriété intellectuelle. Le site et chacun des éléments qui le composent sont la propriété exclusive de <a href="index.php">http://gestion-des-stages.fr/</a>.</p>
 
-			<p>Toute reproduction ou représentation, intégrale ou partielle, du site ou quelconque élément qui le compose, est interdite de même que leur altération.
-			Les marques et noms de domaine qui apparaissent sur le site Internet <a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a> sont la propriété exclusive de <a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a>.</p>
+				<p>Toute reproduction ou représentation, intégrale ou partielle, du site ou quelconque élément qui le compose, est interdite de même que leur altération.
+				Les marques et noms de domaine qui apparaissent sur le site Internet <a href="index.php/">http://gestion-des-stages.fr/</a> sont la propriété exclusive de <a href="index.php">http://gestion-des-stages.fr/</a>.</p>
 
-			<p>Toute reproduction ou utilisation de ces marques ou noms de domaine, de quelque manière et à quelque titre que ce soit, est interdite.</p>
+				<p>Toute reproduction ou utilisation de ces marques ou noms de domaine, de quelque manière et à quelque titre que ce soit, est interdite.</p>
 
-			<p>La création de liens hypertextes vers le site Internet de ne peut être faite qu’avec l’autorisation écrite et préalable de <a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a>.</p>
+				<p>La création de liens hypertextes vers le site Internet de ne peut être faite qu’avec l’autorisation écrite et préalable de <a href="index.php">http://gestion-des-stages.fr/</a>.</p>
 
-			<p><a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a>, n’assure aucune garantie, expresse ou tacite, concernant tout ou partie de son site Internet.</p>
+				<p><a href="index.php">http://gestion-des-stages.fr/</a>, n’assure aucune garantie, expresse ou tacite, concernant tout ou partie de son site Internet.</p>
 
-			<p>En aucun cas, <a href="http://gestion_des_stages.fr/">http://gestion_des_stages.fr/</a> ne peut être tenue pour responsable d’un quelconque dommage direct ou indirect, quelle qu’en soit la nature, découlant de l’utilisation de son site Internet.</p>
-			<br />
-			<p>DIRECTEUR DE LA PUBLICATION :</p>
-			<p>M. Revello - Directeur du Lycée Saint-Vincent</p>
-			<p>03 44 53 96 40</p>
-			<p>30 rue de Meaux</p>
-			<p>60 300  Senlis</p>
-			<br />
-			<p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations vous concernant. Pour cela, il suffit de nous en faire la demande par courrier électronique ou par courrier en nous indiquant votre nom, prénom et adresse.</p>
+				<p>En aucun cas, <a href="index.php">http://gestion-des-stages.fr/</a> ne peut être tenue pour responsable d’un quelconque dommage direct ou indirect, quelle qu’en soit la nature, découlant de l’utilisation de son site Internet.</p>
+				<br />
+				<p>DIRECTEUR DE LA PUBLICATION :</p>
+				<p>M. Revello - Directeur du Lycée Saint-Vincent</p>
+				<p>03 44 53 96 40</p>
+				<p>30 rue de Meaux</p>
+				<p>60 300  Senlis</p>
+				<br />
+				<p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations vous concernant. Pour cela, il suffit de nous en faire la demande par courrier électronique ou par courrier en nous indiquant votre nom, prénom et adresse.</p>
 
-			<p>La demande par courrier est à faire à l'adresse suivante :
-			Lycée Saint-Vincent 
-			30 rue de Meaux
-			60 300  Senlis</p>
+				<p>La demande par courrier est à faire à l'adresse suivante : <br />
+				Lycée Saint-Vincent <br /> 
+				30 rue de Meaux <br />
+				60 300  Senlis</p>
+			</div>
 
 			<?php
 		      	include 'view/includes/footer.php';

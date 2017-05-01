@@ -21,7 +21,7 @@ include 'view/includes/header.php';
 							<div class="nomAnnee">
 						        <select name="classe" id="classe">
 					        		<?php 
-					           			$query = $bdd->prepare('SELECT Nom_classe, Id_classe FROM classe');
+					           			$query = $bdd->prepare('SELECT Nom_classe, Id_classe FROM classe ORDER BY Nom_classe');
 					           			$query->execute();
 					           			$results = $query->fetchAll();
 					           			foreach ($results as $classe) 

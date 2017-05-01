@@ -16,46 +16,24 @@
 	// On inclue le menu et la connexion à la page
 	include 'view/includes/header.php';
 
-	//
-	//require 'view/includes/traitementRechercheEleve.php';
-
-
-	/**
-		if (isset($_GET['la_classe'])) { // Le "name" du premier formulaire de la page 2. Suivi scolarité
-			
-			if (empty($_GET['la_classe'])) {
-				// On execute rien	
-			}
-			else { 
-				$nomClasse = $_GET['la_classe'];
-			}
-		}
-		$nomClasse = $bdd->prepare('SELECT Nom_classe FROM classe WHERE classe.Nom_classe = ?');
-		$nomClasse->execute(array($nomClasse));
-
-	**/
+	// On inclue le traitement de la recherche d'une classe à la page
+	include 'view/includes/traitementRechercheClasse.php'
 ?>
 
 <!-- Le corps de la page -->
 <div class="container">
 	<div id="content">
 		<!-- Responsive -->
-			<div style="float: left;">
-				<?php include 'view/includes/responsiveMenuGauche.php'; ?>
-			</div>
+		<div style="float: left;">
+			<?php include 'view/includes/responsiveMenuGauche.php'; ?>
+		</div>
 			
 		<div id="interne_classe">
-			<!--
 			<?php
-				/**
-				while ($classe = $nomClasse->fetch()) {
-					// Affichage de la classe maintenant stockées dans la variable $classe
-					echo '<h1> Classe '.$etudiant['Nom_classe'].'</h1>';
-				}
-				**/
+				// Affichage de la classe maintenant stockées dans la variable $classe
+				echo '<h1> Classe '.$classe['Nom_classe'].'</h1>';
 			?>
-			-->
-			<h1>Classe BTS1</h1>
+
 			<h3>Historique des éléves par année</h3>
 			<div id="bouton_nouv_annee">
 			<!-- Bouton "Ajouter une année" qui nous redirigera vers la page "Classe : nouvelle année"-->
@@ -107,7 +85,6 @@
 							<th>N° téléphone</th>
 							<th>Année obtention BAC</th>
 							<th>Action</th>
-							<th>Editer</th>
 						</tr>
 					</thead>
 

@@ -12,9 +12,9 @@
 
       <ul class="subs">
 
-        <li><a href="###">Nouveau stage</a></li>
+        <li><a href="add_stage.php">Nouveau stage</a></li>
 
-        <li><a href="###">Historique des stages</a></li>
+        <li><a href="ensembleStages.php">Historique des stages</a></li>
 
         <li><a href="stage.php">Recherche d'un étudiant</a></li>
 

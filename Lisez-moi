@@ -2,6 +2,15 @@
 //  Récapitulatifs des Mises à jour faîtes sur le Projet
 //============================================================================
 
+======= Dylan Noally 01/05/2017 =======
+
+
+
+// stage.php \\
+
+	- Remise à niveau de la requête concernant les classes extraites et affichées afin que celles-ci puisse être triées par nom
+	  pour améliorer le confort de l'utilisateur.
+
 
 
 

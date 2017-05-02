@@ -23,16 +23,16 @@
                         {
                             if($_SESSION['idEleve'] == $recherche2['Id_etudiant'])
                             {
-                                $_SESSION['NomEleve'] = $recherche2['Prenom_etudiant']." ".$recherche2['Nom_etudiant']." - ";
-                                echo $_SESSION['NomEleve'];
+                                $_SESSION['nomEleve'] = $recherche2['Prenom_etudiant']." ".$recherche2['Nom_etudiant']." - ";
+                                echo $_SESSION['nomEleve'];
                             }
                         }
                         foreach ($results as $recherche)
                         {
                             if($_SESSION['idClasse'] == $recherche['Id_classe'])
                             {
-                                $_SESSION['NomClasse'] = $recherche['Nom_classe'];
-                                echo $_SESSION['NomClasse'];
+                                $_SESSION['nomClasse'] = $recherche['Nom_classe'];
+                                echo $_SESSION['nomClasse'];
                             }
                         }
                     } 

@@ -3,12 +3,23 @@
 	session_start();
 
 	include 'view/includes/header.php';
+
 ?>
 
 <div class="container">
 		<div id="content">
 			<div class="left">
-				<h2> // NOM ELEVE(BD) // </h2>
+				<h2><?php if(key_exists('idClasse',$_SESSION) && key_exists('idEleve',$_SESSION)) 
+							{   
+	                        	echo $_SESSION['nomEleve'];
+	                        	echo $_SESSION['nomClasse'];
+	                    	}
+		                    else 
+		                    { 
+		                        echo "Erreur de traitement des informations"; 
+		                    } 
+		                    ?>
+				</h2>
 					<br>
 					
 					<h2>Associer l'élève a une nouvelle classe</h2>
@@ -16,7 +27,7 @@
 					<br>
 					<br>
 
-					<form action="eleve.php" method="POST" >
+					<form action="nouvelleClassePourEleve.php" method="POST" >
 						<label>Classe :</label>
 			        		<select name="classe" id="classe">
 		        		<?php 
@@ -60,6 +71,43 @@
 				           </select>
 				    <br>
 				    <br>
-				    <input type="submit" name="historiqueEleveValider" value="Valider">
+				    <input type="submit" name="classePourEleve" value="Valider">
 
 				    </form>
+
+
+				    <?php
+						// Vérification de la connexion à la base de données
+						// Si nous sommes bien connecté
+						if ($bdd == true) 
+						{
+							
+							
+							// Préparation de la requête SQL suivante : associer l'élève dans une classe
+							$query = $bdd->prepare("INSERT INTO se_trouver (Id_etudiant, Id_date_annee, Id_classe) values (:idEleve, :idAnnee, :idClasse)");
+							$query->bindParam(':idEleve' , $id);
+							$query->bindParam(':idAnnee' , $idAnnee);
+							$query->bindParam(':idClasse' , $idClasse);
+							
+
+							// Vérification du bouton valider
+							if (isset($_POST["classePourEleve"])) 
+							{
+								// Récuperation des valeurs du formulaire
+								$idClasse = $_POST["classe"];
+								$idAnnee = $_POST["annee"];
+								$id = $_SESSION['idEleve'];
+
+								$query->execute();
+
+							}
+							else
+							{
+								echo 'RIEN';
+							}		
+						}
+						elseif ($bdd == false) 
+						{
+							echo "Echec de connexion à la base de données";
+						}
+					?>

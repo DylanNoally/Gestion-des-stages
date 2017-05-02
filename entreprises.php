@@ -17,7 +17,7 @@
 						<label>Nom de l'entreprise :</label>
 				        <select name="entrepriseExistante" id="entrepriseExistante">
 				           <?php 
-		           			$query = $bdd->prepare('SELECT Id_entreprise, Nom_entreprise FROM entreprise');
+		           			$query = $bdd->prepare('SELECT Id_entreprise, Nom_entreprise FROM entreprise ORDER BY Nom_entreprise');
 		           			$query->execute();
 
 		           			$resultatNomEntreprise = $query->fetchAll();

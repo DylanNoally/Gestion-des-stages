@@ -26,8 +26,8 @@
           		/* Si le resultat du formulaire concernant la valeur de la classe choisie
           		est correct, alors on recherche à partir de celle-ci le nom de la classe associé et on l'affiche */
           					{
-								echo $_SESSION['NomEleve'];
-	                            echo $_SESSION['NomClasse'];
+								echo $_SESSION['nomEleve'];
+	                            echo $_SESSION['nomClasse'];
 	                        }
 		                    else 
 		                    { 

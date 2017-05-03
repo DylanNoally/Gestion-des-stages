@@ -1,16 +1,27 @@
 <?php
-// On démarre la session AVANT d'écrire du code HTML
-session_start();
+	// On démarre la session AVANT d'écrire du code HTML
+	session_start();
 
-// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
-//include 'view/includes/retourEnForce.php';
+	// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
+	//include 'view/includes/retourEnForce.php';
 
-// On inclue le menu et la connexion à la page
-include 'view/includes/header.php';
+	include 'view/includes/avant_header.php';
+?>
+	<title>Recherche d'un étudiant</title>
+</head>
+
+<?php 
+	// On inclue le menu et la connexion à la page
+	include 'view/includes/header.php';
 ?>
 
 <div class="container">
 		<div id="content">
+			<!-- Responsive -->
+			<div style="float: left;">
+				<?php include 'view/includes/responsiveMenuGauche.php'; ?>
+			</div>
+
 			<div class="rechercheEleve">
 				<h1>Rechercher un élève</h1>
 				<br>
@@ -68,8 +79,8 @@ include 'view/includes/header.php';
 				</div>
 			</div>
 			<?php 
-			// On inclue le footer à la page
-			include 'view/includes/footer.php';
+				// On inclue le footer à la page
+				include 'view/includes/footer.php';
 			?>
 		</div>
 </div>

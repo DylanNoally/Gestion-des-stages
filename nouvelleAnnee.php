@@ -2,43 +2,64 @@
 	// On démarre la session AVANT d'écrire du code HTML
 	session_start();
 
+	// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
+	//include 'view/includes/retourEnForce.php';
+
+	include 'view/includes/avant_header.php';
+?>
+	<title>Choix de l'année</title>
+</head>
+
+<?php 
+	// On inclue le menu et la connexion à la page
 	include 'view/includes/header.php';
 ?>
 
 <div class="container">
 		<div id="content">
-			<div class="left">
-				<h2> // CLASSE(BD)  LISTE ELEVE DE LA CLASSE// </h2>
-					<br>
-					<br>
-					
-					<h2>Historique des élèves par année</h2>
-					<br>
+			<!-- Responsive -->
+			<div style="float: left;">
+				<?php include 'view/includes/responsiveMenuGauche.php'; ?>
+			</div>
 
-					<form action="nouvelleAnnee.php" method="POST" >
-						<label>Année :</label>
-				           <select name="annee" id="annee">
-				           	<?php 
-		           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee ORDER BY Annee ');
-		           			$query->execute();
-		           			$resultatAnnee = $query->fetchAll();
+			<div class="nouvAnnee">
+				<h1 class="laClasse"> // CLASSE(BD)  LISTE ELEVE DE LA CLASSE// </h1>
+				<h2 align="center" style="margin-bottom: 40px;">Historique des élèves par année</h2>
+					<form action="nouvelleAnnee.php" method="GET">
+						<div class="nouvAnnee_corps">
+							<div class="nouvAnnee_annee">
+								<label>Année :</label>
+								<div class="nouvAnnee_annee_contenu">
+						           <select name="annee" id="annee">
+							           	<?php 
+						           			$query = $bdd->prepare('SELECT Id_date_annee, Annee FROM annee ORDER BY Annee');
+						           			$query->execute();
+						           			$resultatAnnee = $query->fetchAll();
 
-				        	foreach ($resultatAnnee as $Annee) 
-		           			{
-							?>
+								        	foreach ($resultatAnnee as $Annee) 
+						           			{
+										?>
 
-        					<option value="<?php echo $Annee['Id_date_annee']; ?>">
-    							<?php echo $Annee['Annee']; ?>
-        					</option>
-    						<?php
-							}
-							?>
-				           </select>
+				        					<option value="<?php echo $Annee['Id_date_annee']; ?>">
+				    							<?php echo $Annee['Annee']; ?>
+				        					</option>
+				    					<?php
+											}
+										?>
+						           </select>
+						        </div>
+						    </div>
 
-					ou nouvelle :<input type="text" maxlength="9" name="nouvelleAnnee" format="NNNNN">
-					<br>
-
-					<input type="submit" name="historiqueEleveValider" value="Valider">
+						    <div class="nouvAnnee_nouvelle">
+								<label>Ou nouvelle : </label> 
+								<div class="nouvAnnee_nouvelle_contenu">
+									<input type="text" name="nouvelleAnnee" format="NNNNN"/>
+								</div>
+							</div>
+						</div>
+						<div class="nouvAnnee_valider">
+							<input type="submit" name="historiqueEleveValider" value="Valider">
+						</div>
 					</form>
 
 					<?php
@@ -54,15 +75,12 @@
 							{
 								// Récuperation des valeurs du formulaire
 								$ajoutAnnee = $_POST["nouvelleAnnee"];
-
 								// On extrait toutes les années présentes dans la table Année, puis on compare cette dernière
 								// avec la valeur transmise dans le formulaire pour vérifier si cela ne créera pas un doublon.
 								$query2 = $bdd->prepare('SELECT Annee FROM annee');
 					           	$query2->execute();
 					           	$results = $query2->fetchAll();
-
 					           	var_dump($results);
-
 					           	// On recherche dans le resultat de la requête sous forme de tableau si il y a un doublon entre ce 
 					           	// que l'utilisateur à saisie et ce qu'il y a dans la Base de Données
 					           	foreach ($results as $uneAnnee) 
@@ -76,16 +94,13 @@
 					           		{
 					           			// Exécution de la requête 
 										$query->execute();
-
 										// Arrêt forcé du Foreach pour éviter qu'il ne se rééxectue une fois de plus
 										break;
-
 					           		}									
 					           	}
 							}
 							//else
 							//{
-
 							//	echo 'RIEN';
 							//}		
 						}
@@ -94,3 +109,10 @@
 							echo "Echec de connexion à la base de données";
 						}
 					?>
+			</div>
+			<?php 
+				// On inclue le footer à la page
+				include 'view/includes/footer.php';
+			?>
+		</div>
+</div>

@@ -32,15 +32,13 @@
 
       </ul>
 
-    <li><a href="classe.php">Classes</a></li>
-
     </li>
 
     <li><a href="#">Suivi scolarité</a>
 
       <ul class="subs">
 
-        <li><a href="###">Recherche classe/étudiant</a></li>
+        <li><a href="suiviScolarite.php">Recherche classe/étudiant</a></li>
 
         <li><a href="nouvelleClasse.php">Ajouter une classe</a></li>
 

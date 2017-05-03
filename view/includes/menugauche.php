@@ -31,13 +31,11 @@
 
 		</li>
 
-		<li><a href="classe.php">Classes</a></li>
-
 		<li><a class="fly" href="#" tabindex="1">Suivi scolarité</a>
 
 			<ul class="dd">
 
-				<li><a href="###">Recherche classe/étudiant</a></li>
+				<li><a href="suiviScolarite.php">Recherche classe/étudiant</a></li>
 
 				<li><a href="nouvelleClasse.php">Ajouter une nouvelle classe</a></li>
 

@@ -2,7 +2,7 @@
 	// Vérification de la connexion à la base de données
 	// Si nous sommes bien connecté
 	if ($bdd == true) {
-		// Préparation de la requête SQL suivante : inserer la classe
+		// Préparation de la requête SQL suivante : inserer l'année
 		$query = $bdd->prepare("INSERT INTO annee (Annee) values (:annee)");
 		$query->bindParam(':annee' , $annee);
 

@@ -62,7 +62,7 @@
 							   $query->execute();
                                ?>
                                <script type="text/java-script">
-                                               //Mettre l'url complète vers anneesScolaires.php
+                                               //Mettre l'url complète vers typesDeBAC.php
                                                //Si ça créer une boucle (réactualisation infini de la page), il faut supprimer la ligne window.location.href.
                                                //mais il faudra rafraichir la page manuellement pour que les lignes supprimées disparaissent.
                                                //Permet de rafraichir la page après suppression

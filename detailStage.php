@@ -14,28 +14,26 @@
 	// On inclue le menu et la connexion à la page
 	include 'view/includes/header.php';
 
-	// Traitement du paramettre de la page "classe" passé dans l'URL
-	$idEtudiant = 7;
-	/**
-		if (isset($_GET['id_etudiant']) == false) {
-			?>
-				<script type="text/javascript"> alert("Erreur : le(s) paramètre(s) situé(s) dans l'URL ne sont pas ou ne sont plus présent(s)"); </script> 
-			<?php
-		}
+	// Traitement du paramettre de la page "Historique des stages" passé dans l'URL
+	if (isset($_GET['id_etudiant']) == false) {
+		?>
+			<script type="text/javascript"> alert("Erreur : le(s) paramètre(s) situé(s) dans l'URL ne sont pas ou ne sont plus présent(s)"); </script> 
+		<?php
+	}
 
-		elseif (isset($_GET['id_etudiant'])) {
-			$_GET['id_etudiant'] = (int) $_GET['id_etudiant'];
-					
-			if (empty($_GET['id_etudiant'])) {
-			?>
-				<script type="text/javascript"> alert("Erreur : le(s) paramètre(s) situés dans l'URL n'ont plus de valeur(s)"); </script> 
-				<?php	
-			}
-			else { 
-				$idEtudiant = $_GET['id_etudiant'];
-			}
+	elseif (isset($_GET['id_etudiant'])) {
+		$_GET['id_etudiant'] = (int) $_GET['id_etudiant'];
+				
+		if (empty($_GET['id_etudiant'])) {
+		?>
+			<script type="text/javascript"> alert("Erreur : le(s) paramètre(s) situés dans l'URL n'ont plus de valeur(s)"); </script> 
+			<?php	
 		}
-	**/
+		else { 
+			$idEtudiant = $_GET['id_etudiant'];
+		}
+	}
+
 ?>
 
 <!-- Le corps de la page -->

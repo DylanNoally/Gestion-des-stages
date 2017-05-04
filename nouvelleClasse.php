@@ -3,6 +3,9 @@
 <?php
 	// On démarre la session AVANT d'écrire du code HTML
 	session_start();
+	
+	// On include le code permetant d'envoyer l'utilisateur dans la page d'acceuil s'il n'est pas connecté 
+	//include 'view/includes/retourEnForce.php';
 
 	include 'view/includes/avant_header.php';
 ?>
@@ -24,7 +27,7 @@
 		<h1 class="nouvelleClasse_titre">Suivi scolarité</h1>
 		<div id="nouvelleClasse_corps">
 			<h3 class="nouvelleClasse_corps_titre">Ajouter une nouvelle classe</h3>
-			<form class="nouvelleClasse_formulaire" method="post" action="stage.php">
+			<form class="nouvelleClasse_formulaire" method="post" action="classe.php">
 				<div class="nouvelleClasse_reinitialiser">
 					<input type="reset" name="BoutonReset" value="Réinitialiser" onclick="nouvelleClasse.php">
 				</div>

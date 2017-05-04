@@ -25,25 +25,6 @@
 			<!-- Responsive -->
 			<?php include 'view/includes/responsiveMenuGauche.php'; ?>
 
-			<div class="left">
-				<!--
-				<?php
-					if (key_exists('login', $_SESSION)) 
-					{ 
-						echo "Petit rappel : Vous vous êtes connecté à votre Session le, " . $_SESSION['datetime'];
-					}
-					else
-					{
-				?> 
-						<h2>Connectez-vous !</h2>
-						<?php
-						include 'view/includes/formulaireDeConnexion.php';
-					}
-
-						?>
-				-->
-			</div>
-
 			<?php 
 			// On inclue le footer à la page
 			include 'view/includes/footer.php';

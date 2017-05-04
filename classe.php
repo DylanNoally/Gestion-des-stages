@@ -9,7 +9,7 @@
 
 		include 'view/includes/avant_header.php';
 ?>
-	<title>Classe</title>
+	<title>Historique des élèves par année</title>
 </head>
 
 <?php 
@@ -30,15 +30,16 @@
 			
 		<div id="interne_classe">
 			<?php
+				include 'view/includes/traitementClassePageClasse.php';
+				
 				// Affichage de la classe maintenant stockées dans la variable $classe
-				echo '<h1> Classe '.$classe['Nom_classe'].'</h1>';
+				echo '<h1> Classe '.$lesClasses['Nom_classe'].'</h1>';
 			?>
 
-			<h3>Historique des éléves par année</h3>
+			<h3>Historique des élèves par année</h3>
 			<div id="bouton_nouv_annee">
 			<!-- Bouton "Ajouter une année" qui nous redirigera vers la page "Classe : nouvelle année"-->
-			
-				<p><a href="nouvelleAnnee.php"><img src="public/img/bouton_nv_classe.png" alt="Image bouton nouvelle année" title="Ajouter une année"></a></p>
+				<p><a href="nouvelleAnnee.php?Nom_classe=<?php echo $lesClasses['Nom_classe']; ?>"><img src="public/img/bouton_nv_classe.png" alt="Image bouton nouvelle année" title="Ajouter une année"></a></p>
 			
 			</div>
 			<div id="table_class">
@@ -48,27 +49,14 @@
 					// Préparation de toutes les données à utiliser 
 					// --------------------------------------------
 					// --------------------------------------------
-					$eleves = [];
-					// Préparation de la requête SQL suivante : afficher toutes les années
-					$query = $bdd->prepare('SELECT Id_date_annee FROM annee');
-
-					// Exécution de la requête 
-					$query->execute();
-					$results = $query->fetchAll();
+					 $lesClasses = $bdd->prepare( 'SELECT Annee, Nom_classe FROM annee, se_trouver, classe WHERE annee.Id_date_annee = se_trouver.Id_date_annee and classe.Id_classe = se_trouver.Id_classe and classe.Nom_classe= ? GROUP BY Annee');
+					$lesClasses ->execute(array($classe));
 
 
-					foreach ($results as $coordonnees) {
-						// Préparation de la requête SQL suivante : afficher toutes les coordonnées des étudiants qui se trouvent dans la clé 0 de l'array $coordonnees
-						// L'array $coordonnees qui est la variable $results qui elle-même est le résultat de la requête SQL suivante : afficher toutes les années
-						// afficher toutes les coordonnées des étudiants qui se trouvent dans la première année (puis incrémentation gràce à la boucle foreach)
-						$query = $bdd->prepare('SELECT * FROM classe, etudiant, annee, se_trouver WHERE se_trouver.Id_classe = classe.Id_classe AND se_trouver.Id_etudiant = etudiant.Id_etudiant AND se_trouver.Id_date_annee = annee.Id_date_annee AND annee.Id_date_annee = '.$coordonnees[0]);
-						$query->execute();
-						$results = $query->fetchAll();
-
-						// La fonction array_push à ajouté les valeurs des deux variables $results à l'array $eleve
-						// Donc tous les résultats des requêtes SQL ($results) dans l'array $eleve
-						array_push($eleves, $results);
-					}
+					while($laClasse = $lesClasses->fetch()) {
+					$coordonneesEtudiant= $bdd->prepare( 'SELECT Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Annee_obtention_bac_etudiant, Annee FROM etudiant, classe, se_trouver, annee WHERE etudiant.Id_etudiant = se_trouver.Id_etudiant and classe.Id_classe = se_trouver.Id_classe and annee.Id_date_annee = se_trouver.Id_date_annee and classe.Nom_classe= ? And Annee like "'.$laClasse['Annee'].'" ORDER BY Nom_etudiant'); 
+					$coordonneesEtudiant ->execute(array($classe));
+				;
 					// ------------------------------------------------------
 					// ------------------------------------------------------
 					// Fin de la préparation de toutes les données à utiliser 
@@ -80,6 +68,7 @@
 				<table>
 					<thead>
 						<tr>
+							<p><?php echo'<div style="display: inline-block; font-weight: bold; width: 100%; text-align: center; margin-top: 30px; font-size: 21px;">'.$laClasse['Annee'].'</div'; ?></p>
 							<th>Nom</th>
 							<th>Prénom</th>
 							<th>N° téléphone</th>
@@ -91,22 +80,15 @@
 					<tbody>
 
 						<?php
-						foreach ($eleves as $annee) {
-							// Si l'array $anneee n'est pas vide
-							// Si il y a des valeurs dans l'array annee
-							if (!empty($annee)) {
-								// Afficher l'année qui se trouve dans la première clé de l'array $annee qui est lui_même l'array $eleves auquel il y a les valeurs de la variable $results
-								// Puis incrémentation gràce à la boucle foreach
-								echo '<b>'.$annee[0]['Annee'].'</b>';
-							foreach ($annee as $etudiant) {
+							while($laCoor = $coordonneesEtudiant->fetch()) {
 						?>
 						<tr>
 								<td>
 									<?php
-									// Afficher le nom de l'étudiant qui se trouve dans la première clé de l'array $etudiant 
-									// Qui est lui_même l'array $annee qui est lui_même l'array $eleves auquel il y a les valeurs de la variable $results
-									// Puis incrémentation gràce à la boucle foreach
-									echo $etudiant['Nom_etudiant'];
+									// Afficher le nom de l'étudiant qui se trouve dans la clé 'Nom_etudiant' 
+									// Cette clé est dans l'array $laCoor qui contient les données extraites de $coordonneesEtudiant
+									// Puis incrémentation gràce à la boucle while
+									echo $laCoor['Nom_etudiant'];
 									?>
 								</td>
 								<td>
@@ -114,7 +96,7 @@
 									// Afficher le prénom de l'étudiant
 									// ----
 									// ----
-									echo $etudiant['Prenom_etudiant'];
+									echo $laCoor['Prenom_etudiant'];
 									?>
 								</td>
 
@@ -123,7 +105,7 @@
 									// Afficher le numéro de téléphone de l'étudiant
 									// ----
 									// ----
-									echo $etudiant['Telephone_etudiant'];
+									echo $laCoor['Telephone_etudiant'];
 									?>
 								</td>
 								<td>
@@ -131,25 +113,23 @@
 									// Afficher l'année d'obtention de bac de l'étudiant
 									// ----
 									// ----
-									echo $etudiant['Annee_obtention_bac_etudiant'];
+									echo $laCoor['Annee_obtention_bac_etudiant'];
 									?>
 								</td>
 
-								<!-- Lorsque l'on clique sur "Voir détail" cela nous renvoi vers la page "detail_stage.php" -->
-								<!-- Auquel se trouve l'étudiant et auquel il y a l'identifiant de l'étudiant ("Id_etudiant" qui fait partie des coordonnées des étudiants) passé en paramètre dans l'URL -->
-								<!-- Puis incrémentation gràce à la boucle foreach -->
+								<!-- Lorsque l'on clique sur "Voir détail" cela nous renvoi vers la page "###" -->
+								<!-- Auquel se trouve l'étudiant et auquel il y a l'identifiant de l'étudiant ("Id_etudiant") passé en paramètre dans l'URL -->
+								<!-- Puis incrémentation gràce à la boucle while -->
 								<td><a href="#">Voir détail</a></td>
-						<?php
-								}
-							}
-						}
-
-						?>
-						
-								
 						</tr>
+						<?php
+						}
+						?>
 					</tbody>
 				</table>
+				<?php
+				}
+				?>
 			</div>
 		</div>
 		<?php 
